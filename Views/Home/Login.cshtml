@@ -1,0 +1,45 @@
+﻿@model LojaVirtual.Models.Cliente
+@{ 
+    ViewData["Title"] = "Login";
+}
+   
+    <main role="main">
+        <br />
+        <br />
+        <section class="container">
+            <aside class="col-sm-4">
+                <h3 class="subtitle-doc">
+                </h3>
+                <div id="code_login_1">
+                    <div class="card">
+                        <article class="card-body">
+                            <a asp-action="CadastroCliente" asp-controller="/Home/CadastroCliente"  class="float-right btn btn-outline-primary">Cadastre-se</a>
+                            <h4 class="card-title mb-4 mt-1">Entrar</h4>
+                            <form method="post">
+                                <div class="form-group">
+                                    @if (ViewData["MSG_S"] != null)
+                                    {
+                                        <p class="alert alert-success">@ViewData["MSG_S"]</p>
+                                    }
+                                    <label>Seu email</label>
+                                    <input asp-for="Email" class="form-control" placeholder="Email" type="email">
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <a class="float-right" href="#">Não Lembra sua senha?</a>
+                                    <label>Sua senha</label>
+                                    <input  asp-for="Senha" class="form-control" placeholder="******" type="password">
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Acessar </button>
+                                </div> <!-- form-group// -->
+                            </form>
+                        </article>
+                    </div> <!-- card.// -->
+                </div> <!-- code-wrap.// -->
+            </aside>
+        </section>
+    </main>
+
+
+
+

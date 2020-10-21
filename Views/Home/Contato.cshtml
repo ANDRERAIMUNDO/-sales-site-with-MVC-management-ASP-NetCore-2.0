@@ -1,0 +1,108 @@
+﻿
+@model LojaVirtual.Models.Contato
+@{ 
+    ViewData["Title"] = "Contato";
+    LojaVirtual.Models.Contato contato = (LojaVirtual.Models.Contato) ViewData["CONTATO"];
+}
+<form asp-action="ContatoAcao" asp-controller="Home">
+    <main role="main">
+        <br />
+        <br />
+        @using (Html.BeginForm("ContatoAcao", "Home", FormMethod.Post))
+        {
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-6">
+                        <h4 class="subtitle-doc">
+                            # Outros contatos
+                            <a asp-controller="#" data-html="code_desc_simple" class="showcode">[code]</a>
+                        </h4>
+                        <div id="code_desc_simple">
+                            <div class="box">
+                                <dl>
+                                    <dt>Devolução/Garantia: </dt>
+                                    <dd>devolucao@lojavirtual.com.br</dd>
+                                </dl>
+                                <dl>
+                                    <dt>Televendas: </dt>
+                                    <dd>(61) 4000-2000</dd>
+                                </dl>
+                                <dl>
+                                    <dt>SAC:</dt>
+                                    <dd>sac@lojavirtual.com.br</dd>
+                                </dl>
+                            </div> <!-- box.// -->
+                        </div> <!-- code-wrap.// -->
+                    </aside>
+                    <aside class="col-sm-6">
+
+                        <h4 class="subtitle-doc">
+                            # Contato
+                        </h4>
+                        <div>
+                            <article class="card">
+                                <div class="card-body p-5">
+                                    @if (ViewData["MSG_S"] != null)
+                                    {
+                                        <p class="alert alert-success">@ViewData["MSG_S"]</p>
+                                    }
+                                    @if (ViewData["MSG_E"] != null)
+                                    {
+                                        <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
+                                    }
+                                    <form role="form" method="post" action="/Home/ContatoAcao">
+                                        <div class="form-group">
+                                            <label for="nome">Nome</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                                </div>
+                                                <input type="text" asp-for="Nome" id="nome" class="form-control" name="nome" placeholder=""
+                                                       required="" value="@(contato != null ? contato.Nome : "")">
+                                            </div> <!-- input-group.// -->
+                                        </div> <!-- form-group.// -->
+
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-at"></i></span>
+                                                </div>
+                                                <input type="text" asp-for="Email" id="email" class="form-control" name="email" placeholder=""
+                                                       value="@(contato != null ? contato.Email : "")">
+                                            </div> <!-- input-group.// -->
+                                        </div> <!-- form-group.// -->
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="texto"><span class="hidden-xs">Texto</span> </label>
+                                                    <div class="form-inline">
+                                                        <textarea class="form-control" asp-for="Texto" name="texto" id="texto" width:100%"
+                                                                  value="@(contato != null ? contato.Texto : "")"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- row.// -->
+                                        <button class="subscribe btn btn-primary btn-block" type="submit"> Enviar </button>
+                                    </form>
+                                </div> <!-- card-body.// -->
+                            </article> <!-- card.// -->
+
+                        </div> <!-- code-wrap.// -->
+
+                    </aside>
+                </div>
+            </div>
+        }
+            <hr class="featurette-divider">
+        </main>
+    </form>
+    <!-- Bootstrap core JavaScript
+              ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="resources/lib/holder/holder.min.js"></script>
+    <script src="resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="resources/lib/popper1.14.6/popper.min.js"></script>
+    <script src="resources/lib/bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>

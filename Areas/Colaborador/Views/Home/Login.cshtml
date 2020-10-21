@@ -1,0 +1,47 @@
+﻿@model LojaVirtual.Models.Colaborador
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<main role="main">
+    <section class="container">
+        <aside class="col-sm-6">
+            <h3 class="subtitle-doc">
+            </h3>
+            <div id="code_login_1">
+                <div class="card">
+                    <article class="card-body">
+                        <h4 class="card-title mb-4 mt-1">Entrar</h4><p>(Acesso Colaborador)</p>
+                        <form method="post">
+                            <div class="form-group">
+                                @if (ViewData["MSG_S"] != null)
+                                {
+                                    <p class="alert alert-success">@ViewData["MSG_S"]</p>
+                                }
+                                <label>Seu email</label>
+                                <input asp-for="Email" class="form-control" placeholder="Email" type="email">
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <a class="float-right" href="#">Não Lembra sua senha?</a>
+                                <label>Sua senha</label>
+                                <input asp-for="Senha" class="form-control" placeholder="******" type="password">
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Acessar </button>
+                            </div> <!-- form-group// -->
+                            @{ 
+                                /*usado AntiForgery  quando se usa taghelp*/
+                                @Html.AntiForgeryToken()
+                            }
+                            
+                        </form>
+                    </article>
+                </div> <!-- card.// -->
+            </div> <!-- code-wrap.// -->
+        </aside>
+    </section>
+</main>
+
+
+
